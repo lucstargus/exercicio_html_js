@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 12px;
+}
+
+form {
+    margin: 40px;
+}
+
+form input,
+form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px;
+    resize: none;
+}
+
+button {
+    background-color: #fbff00;
+    text-transform: uppercase;
+    color: #030303;
+    font-weight: bold;
+    font-size: 18px;
+    font-style: italic;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #dcdf53;
+    border: 1px;
+}
