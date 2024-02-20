@@ -1,25 +1,31 @@
-const form = document.getElementById('form');
+const form = document.getElementById('form-confirm');
 
-function validaCampo(dadosIncorretos) {
-    const dadoComoArray = dadosIncorretos.split (' ');
-    return dadoComoArray.lenght >= 2;
+let formValid = false;
+
+function numbervalid (ValA, ValB){
+    return ValB > ValA;
 }
 
-form.addEventListener("submit", function(e) {
-    let formEvalido = false;
-    e.preventDefault();
+form.addEventListener('submit', function(e){
+    e.preventDefault(); //previne carregamento da página após "submit"
+    let ValA = parseFloat(document.getElementById('valor-a').value);
+    let ValB = parseFloat(document.getElementById('valor-b').value);
 
-const campoA = document.getElementById('campo-a')
-const campoB = document.getElementById('campo-b')
-const mensagemSucesso = 
+    const messagesucess = 'Validado com sucesso! Verificando: <b> Valor A menor que Valor B!</B>';
+    const containermessagesucess = document.querySelector('.success-message');
+    
+    formValid = numbervalid(ValA, ValB);
+    
+    if (formValid){
+        document.querySelector('.error-message').style.display = 'none';
+        containermessagesucess.innerHTML = messagesucess;
+        containermessagesucess.style.display = 'block';
+        document.querySelector('.error-message').style.display = 'none';
 
-formEvalido = validaCampo(campoA.value)
-if (formEvalido) {
-        document.querySelector('success-message').innerHTML = mensagemSucesso
-
-        campoA.value = '';
-        campoB.value = '';
+        ValA.value = '';
+        ValB.value = '';
     } else {
-        alert("");
-    }
+        document.querySelector('.error-message').style.display = 'block';
+        containermessagesucess.style.display = 'none';
+    }    
 })
